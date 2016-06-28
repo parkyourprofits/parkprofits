@@ -1,0 +1,217 @@
+body {
+	font-family:"Open Sans Regular", sans-serif;
+	margin:0;
+	padding:0;
+}
+#header {
+	background-image:url("images/park-bg-img.png");
+	padding-bottom:40px;
+	background-size:100% 100%;
+}
+#navbar {
+	background-color:#FFFFFF;
+	width:60%;
+	/*padding:60px;*/
+	height:80px;
+	margin:0 auto;
+}
+#nav-logo {
+	float:left;
+	margin:20px 20px 20px 40px;
+}
+#nav-logo img {
+	width:75%;
+	margin:0;
+}
+#nav {
+	float:right;
+	margin-top:30px;
+	margin-right:90px;
+	max-width:100%;
+}
+#nav a {
+	text-decoration:none;
+	font-size:0.6em;
+	color:#393544;
+	padding:0 20px;
+}
+#nav-logo img {
+	margin:0 !important;
+}
+#header img {
+	margin:150px auto 50px auto;
+	display:block;
+	clear:both;
+}
+#header p {
+	color:#FFFFFF;
+	text-align:center;
+	margin-bottom:100px;
+	margin-top:16px;
+	font-family:"Open Sans Light", sans-serif;
+	font-size:1em;
+}
+#asset {
+	height:100px;
+	background-color:#F7F7F7;
+	padding-top:80px;
+}
+h2 {
+	font-family:"Open Sans Light", sans-serif;
+	font-weight:lighter;
+	text-align:center;
+	color:#353738;
+	letter-spacing:5px;
+	margin:0;
+}
+#press-left {
+	background-image:url("images/press-bg.png");
+	width:65%;
+	float:left;
+	padding:0;
+	margin:0; 
+	height:450px;
+}
+#press-left img {
+	width:20%;
+	display:block;
+	margin:180px auto;
+}
+#press-right {
+	width:35%;
+	float:right;
+	padding:0;
+	margin:0;
+	height:450px;
+}
+#press-text, #disclosure-text {
+	padding:0 60px;
+	height:300px;
+}
+#press-text h2, #disclosure-text h2 {
+	padding-top:40px;
+}
+p {
+	color:#848789;
+	font-size:0.75em;
+	line-height:1.9em;
+}
+.center-text {
+	text-align:center;
+}
+.arrow-down {
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #FFFFFF;
+	margin:0 auto 40px auto;
+}
+.button-bg {
+	background-color:#282F35;
+	height:150px;
+	/*padding-top:50px;*/
+}
+div.button {
+	border:1px solid #FFFFFF;
+	width:250px;
+	margin:0 auto;
+}
+.button p {
+	color:#FFFFFF;
+	text-align:center;
+}
+#purchase, #exchange {
+	clear:both;
+	padding:50px 200px;
+}
+#purchase p, #exchange p {
+	text-align:center;
+}
+#disclosure-left, #disclosure-right {
+	float:left;
+	width:33%;
+	height:450px;
+}
+#disclosure-left {
+	background-image:url(images/disclosure01.png);
+}
+#disclosure-right {
+	background-image:url(images/disclosure02.png);
+}
+#disclosure-middle {
+	float:left;
+	width:34%;
+}
+#mailing {
+	clear:both;
+	padding:100px;
+}
+#mailing img {
+	display:block;
+	margin:0 auto;
+	width:8%;
+}
+#mailing p {
+	font-family:"Open Sans Light Italic", sans-serif;
+	font-size:1.5em;
+	font-weight:lighter;
+	text-align:center;
+	margin:40px;
+}
+#mailing form {
+	text-align:center;
+}
+form input {
+	width:300px;
+	padding:20px;
+}
+button {
+	height:57px;
+	width:80px;
+	background-color:#0E4B80;
+	color:#FFFFFF;
+	font-size:0.9em;
+	border:none;
+}
+footer {
+	clear:both;
+	background-color:#F7F7F7;
+	height:130px;
+	padding: 60px 0;
+}
+#footer {
+	width:80%;
+	margin:0 auto;
+}
+#address, #credits {
+	float:left;
+	width:33%;
+}
+#social {
+	float:left;
+	width:34%;
+}
+#social img {
+	display:block;
+	margin:15px auto 0 auto;
+}
+footer p {
+	line-height:1.25em;
+}
+#credits p {
+	float:right;
+}
+@media only screen and (max-width: 1156px) {
+	#nav a {
+		padding:0 10px;
+	}
+	#nav {
+		margin-right:80px !important;
+	}
+}
+@media only screen and (max-width: 1240px) {
+	#nav {
+		margin-right:40px;
+	}
+}
