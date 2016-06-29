@@ -1,0 +1,17 @@
+plugins {
+  id "org.ajoberstar.github-pages" version "1.5.1-rc.2"
+}
+
+def siteDir = "src/html"
+
+githubPages {
+  repoUri = 'https://github.com/patrickdugan/parkprofits.git'
+  targetBranch = 'gh-pages'
+
+  pages {
+    from siteDir
+  }
+}
+
+task publish(dependsOn: publishGhPages,
+            description: "Publishes 'siteDir' to Github Pages on 'targetBranch'")
