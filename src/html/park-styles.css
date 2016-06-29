@@ -202,6 +202,16 @@ footer p {
 #credits p {
 	float:right;
 }
+@media only screen and (max-width: 791px) {
+	#navbar {
+		width:100% !important;
+	}
+}
+@media only screen and (max-width: 1055px) {
+	#navbar {
+		width:80%;
+	}
+}
 @media only screen and (max-width: 1156px) {
 	#nav a {
 		padding:0 10px;
