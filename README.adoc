@@ -2,3 +2,17 @@
 
 Development version is at https://patrickdugan.github.io/parkprofits/
 
+== To publish to Github
+
+On MacOS or Linux:
+
+    ./gradlew publish
+
+
+On Windows
+
+    gradlew.bat publish
+
+Then enter your Github username and password in the displayed dialog box.
+
+
