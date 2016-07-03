@@ -1,5 +1,6 @@
 plugins {
   id "org.ajoberstar.github-pages" version "1.5.1-rc.2"
+  id "org.aim42.htmlSanityCheck" version "0.9.3"
 }
 
 def siteDir = "src/html"
@@ -15,3 +16,9 @@ githubPages {
 
 task publish(dependsOn: publishGhPages,
             description: "Publishes 'siteDir' to Github Pages on 'targetBranch'")
+
+
+
+htmlSanityCheck {
+    sourceDir = new File( "$siteDir" )
+}
