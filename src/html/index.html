@@ -20,6 +20,7 @@
         <div id="navbar">
 
             <div id="nav-logo">
+              <a href="#top"><img src="images/nav-logo.png"></a>
             </div>
 
             <div id="nav">
@@ -45,7 +46,7 @@
     <!-- BEGIN INTRO SLIDE -->
 
 
-    <div class="gp_intro">
+    <div id="top" class="gp_intro">
 
         <div class="gp-bigwhite_Park_logo">
         </div>
@@ -272,7 +273,16 @@
 </div>
 
 	<!-- END PAGE CONTAINER -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="jquery.nav.js"></script>
+<script>
+$(function() {
+  $('#navbar').onePageNav({
+    changeHash: true,
+    scrollThreshold: 0.3
+  });
+});
+</script>
 </body>
 
 </html>
