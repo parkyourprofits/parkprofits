@@ -1,9 +1,13 @@
 plugins {
+  id "com.monochromeroad.s3sync" version "0.10"
   id "org.ajoberstar.github-pages" version "1.5.1-rc.2"
   id "org.aim42.htmlSanityCheck" version "0.9.3"
 }
 
-def siteDir = "src/html"
+import com.monochromeroad.gradle.plugin.aws.s3.S3Sync
+
+def siteDir = 'src/html'
+def destBucket = 'www.parkyourprofits.com'
 
 githubPages {
   repoUri = 'https://github.com/patrickdugan/parkprofits.git'
@@ -14,10 +18,21 @@ githubPages {
   }
 }
 
-task publish(dependsOn: publishGhPages,
-            description: "Publishes 'siteDir' to Github Pages on 'targetBranch'")
+task publish(type: S3Sync) {
+    description = "Publishes (synchronizes) \"${siteDir}\" to S3 bucket named \"${destBucket}\"."
 
+    accessKey parkAwsAccessKey
+    secretKey parkAwsSecretKey
 
+    configFile "jets3t.properties"
+    acl = com.monochromeroad.gradle.plugin.aws.s3.ACL.PublicRead
+
+    from siteDir
+    into destBucket
+}
+
+task publishGh(dependsOn: publishGhPages,
+            description: "Publishes \"${siteDir}\" to Github Pages on 'targetBranch'")
 
 htmlSanityCheck {
     sourceDir = new File( "$siteDir" )
