@@ -1,4 +1,5 @@
 plugins {
+  id "com.craigburke.bower-installer" version "2.5.1"
   id "com.monochromeroad.s3sync" version "0.10"
   id "org.ajoberstar.github-pages" version "1.5.1-rc.2"
   id "org.aim42.htmlSanityCheck" version "0.9.3"
@@ -7,18 +8,44 @@ plugins {
 import com.monochromeroad.gradle.plugin.aws.s3.S3Sync
 
 def siteDir = 'src/html'
+def unavailableDir = 'build/unavailableSite'
+
 def destBucket = 'www.parkyourprofits.com'
+//def destBucket = 'unavailable.parkyourprofits.com'
+
+bower {
+    installBase = 'src/html/assets/bower'
+
+    'jquery.countdown'()
+}
+
 
 githubPages {
-  repoUri = 'https://github.com/patrickdugan/parkprofits.git'
-  targetBranch = 'gh-pages'
+  repoUri = 'https://github.com/parkyourprofits/parkyourprofits.github.io.git'
+  targetBranch = 'master'
 
   pages {
-    from siteDir
+    from unavailableDir
   }
 }
 
-task publish(type: S3Sync) {
+task buildUnavailable(type: Copy) {
+    from siteDir
+    into unavailableDir
+
+    // Use a closure to map the file name
+    rename { String fileName ->
+        switch (fileName) {
+            case "index.html": return "unavailable.html"
+            case "unavailable.html": return "index.html"
+            default: return fileName
+        }
+    }
+}
+
+publishGhPages.dependsOn buildUnavailable
+
+task publishS3(type: S3Sync) {
     description = "Publishes (synchronizes) \"${siteDir}\" to S3 bucket named \"${destBucket}\"."
 
     accessKey parkAwsAccessKey
@@ -33,6 +60,10 @@ task publish(type: S3Sync) {
 
 task publishGh(dependsOn: publishGhPages,
             description: "Publishes \"${siteDir}\" to Github Pages on 'targetBranch'")
+
+task publish(dependsOn: [publishS3, publishGhPages],
+            description: "Publishes \"${siteDir}\" to Github Pages and S3")
+
 
 htmlSanityCheck {
     sourceDir = new File( "$siteDir" )
