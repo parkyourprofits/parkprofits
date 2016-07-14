@@ -11,6 +11,7 @@ def siteDir = 'src/html'
 def unavailableDir = 'build/unavailableSite'
 
 def destBucket = 'www.parkyourprofits.com'
+def stageBucket = 'stage.parkyourprofits.com'
 //def destBucket = 'unavailable.parkyourprofits.com'
 
 bower {
@@ -56,6 +57,19 @@ task publishS3(type: S3Sync) {
 
     from siteDir
     into destBucket
+}
+
+task stageS3(type: S3Sync) {
+    description = "Publishes (synchronizes) \"${siteDir}\" to S3 bucket named \"${stageBucket}\"."
+
+    accessKey parkAwsAccessKey
+    secretKey parkAwsSecretKey
+
+    configFile "jets3t_stage.properties"
+    acl = com.monochromeroad.gradle.plugin.aws.s3.ACL.PublicRead
+
+    from siteDir
+    into stageBucket
 }
 
 task publishGh(dependsOn: publishGhPages,
