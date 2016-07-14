@@ -62,8 +62,8 @@ task publishS3(type: S3Sync) {
 task stageS3(type: S3Sync) {
     description = "Publishes (synchronizes) \"${siteDir}\" to S3 bucket named \"${stageBucket}\"."
 
-    accessKey parkAwsAccessKey
-    secretKey parkAwsSecretKey
+    accessKey project.hasProperty('parkAwsAccessKey') ? parkAwsAccessKey : System.getenv('S3_STAGE_ID')
+    secretKey project.hasProperty('parkAwsSecretKey') ? parkAwsSecretKey : System.getenv('S3_STAGE_KEY') 
 
     configFile "jets3t_stage.properties"
     acl = com.monochromeroad.gradle.plugin.aws.s3.ACL.PublicRead
