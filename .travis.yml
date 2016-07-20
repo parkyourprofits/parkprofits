@@ -16,5 +16,5 @@ cache:
 
 env:
   global:
-  - secure: "k+Wu+DmqhFgk13vqk8ggpnAArKkLd2OgX9XEfWog/tuNFTXAJZXXCfnW7k38ePDl52hCiWV7VGernxWKr6bf7iCDN0enz1mXvsBDlYlCzwbL3fG7+WoQ6edxYkR+/ylLvk/n9JzUxvPWJ1yk2fO7giCgzyDpk5ny9fm7d1SbUaQ="
-  - secure: "r7MVbhkiwGvHPg5R4I9x+0hOykhavMgp6MgTshI5fq4HMBNh9M5Yj5+FTeh6euGmMZGKnKBHkE7MT1Y7ZxJvK1L3AupovxHBI0094ZLmb2AZjOXsAujwJ46fOHSDN0nJCB7HrNg7JjO0hOlfZT6ogezANrBXGL5OPJrvhk+3ThU="
+    - secure: "k+Wu+DmqhFgk13vqk8ggpnAArKkLd2OgX9XEfWog/tuNFTXAJZXXCfnW7k38ePDl52hCiWV7VGernxWKr6bf7iCDN0enz1mXvsBDlYlCzwbL3fG7+WoQ6edxYkR+/ylLvk/n9JzUxvPWJ1yk2fO7giCgzyDpk5ny9fm7d1SbUaQ="
+    - secure: "r7MVbhkiwGvHPg5R4I9x+0hOykhavMgp6MgTshI5fq4HMBNh9M5Yj5+FTeh6euGmMZGKnKBHkE7MT1Y7ZxJvK1L3AupovxHBI0094ZLmb2AZjOXsAujwJ46fOHSDN0nJCB7HrNg7JjO0hOlfZT6ogezANrBXGL5OPJrvhk+3ThU="

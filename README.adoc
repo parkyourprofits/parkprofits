@@ -15,7 +15,7 @@ On Windows
     gradlew.bat stageS3
 
 
-== To publish live version
+== To publish to production
 
 On MacOS or Linux:
 
