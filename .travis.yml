@@ -11,10 +11,10 @@ before_cache:
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+    - "$HOME/.gradle/caches/"
+    - "$HOME/.gradle/wrapper/"
 
 env:
   global:
-    - secure: "k+Wu+DmqhFgk13vqk8ggpnAArKkLd2OgX9XEfWog/tuNFTXAJZXXCfnW7k38ePDl52hCiWV7VGernxWKr6bf7iCDN0enz1mXvsBDlYlCzwbL3fG7+WoQ6edxYkR+/ylLvk/n9JzUxvPWJ1yk2fO7giCgzyDpk5ny9fm7d1SbUaQ="
-    - secure: "r7MVbhkiwGvHPg5R4I9x+0hOykhavMgp6MgTshI5fq4HMBNh9M5Yj5+FTeh6euGmMZGKnKBHkE7MT1Y7ZxJvK1L3AupovxHBI0094ZLmb2AZjOXsAujwJ46fOHSDN0nJCB7HrNg7JjO0hOlfZT6ogezANrBXGL5OPJrvhk+3ThU="
+    - secure: r7MVbhkiwGvHPg5R4I9x+0hOykhavMgp6MgTshI5fq4HMBNh9M5Yj5+FTeh6euGmMZGKnKBHkE7MT1Y7ZxJvK1L3AupovxHBI0094ZLmb2AZjOXsAujwJ46fOHSDN0nJCB7HrNg7JjO0hOlfZT6ogezANrBXGL5OPJrvhk+3ThU=
+    - secure: W/I1N/1Skqp/ns7EatqQCg3+HSEIXJy5OwJqv6Y+Alyjc3oXVSxymWB0gC7yB9X8Z/etaLWiUrFsxUoPk13BD8Z2tlam+aHFSQ9Wv9ZxuI1lLUfv3vw8arBrrM1Aqx+Qtb/iCWdow4enNHpp1dJEVI4LTUfE0xyRaTs1MnFLSW8=
