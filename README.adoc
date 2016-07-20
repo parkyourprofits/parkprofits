@@ -1,8 +1,21 @@
 = Park Profits Web Site
 
-Development version is at https://patrickdugan.github.io/parkprofits/
+* Development version is at http://stage.parkyourprofits.com
+* Production version is at http://www.parkyourprofits.com
 
-== To publish to Github
+== To publish to staging
+
+On MacOS or Linux:
+
+    ./gradlew stageS3
+
+
+On Windows
+
+    gradlew.bat stageS3
+
+
+== To publish live version
 
 On MacOS or Linux:
 
