@@ -259,8 +259,7 @@ div.button {
 	width: 65%;
 	margin: 0 auto;
 }
-#mailing-form.purchaseForm,
-#fullname.purchaseForm{
+.purchaseForm {
 	width: 100%;
 	margin: 10px auto 0;
 	height: 40px;
