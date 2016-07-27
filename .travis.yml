@@ -5,6 +5,10 @@ jdk: oraclejdk8
 script:
   - 'if [ "$TRAVIS_PULL_REQUEST" = "true" ]; then gradle htmlSanityCheck buildUnavailable ; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then gradle stageS3 --debug --stacktrace ; fi'
+# To be done:
+# If TRAVIS_BRANCH = 'master' then gradle publish
+# If TRAVIS_BRANCH = 'staging' then gradle stageS3
+#
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
