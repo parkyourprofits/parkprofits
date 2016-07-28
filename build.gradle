@@ -22,12 +22,19 @@ bower {
 
 
 githubPages {
-  repoUri = 'https://github.com/parkyourprofits/parkyourprofits.github.io.git'
-  targetBranch = 'master'
+    repoUri = 'https://github.com/parkyourprofits/parkyourprofits.github.io.git'
+    targetBranch = 'master'
 
-  pages {
-    from unavailableDir
-  }
+    pages {
+        from unavailableDir
+    }
+
+    credentials {
+        // Use token stored as property for local builds and a travis encrypted key (in 'GH_TOKEN') for Travis builds
+        username = project.hasProperty('parkGithubAccessToken') ? parkGithubAccessToken : System.getenv('GH_TOKEN')
+        // Password can't be null or '' if githubPages to use "hardcoded" credential in the username.
+        password = '\n'
+    }
 }
 
 task buildUnavailable(type: Copy) {
