@@ -1,8 +1,8 @@
-var parkPurchaseApp = angular.module('parkPurchaseApp', []);
+var parkPurchaseApp = angular.module('parkPurchaseApp', ['ngMessages']);
 
 parkPurchaseApp.controller('PurchaseFormController', function PurchaseFormController($scope, $http) {
   $scope.order = {
-    formname: 'purchase-form'
+    formname: "purchase-form"
   };
   $scope.country = {};
   $scope.state = {};
@@ -508,6 +508,7 @@ parkPurchaseApp.controller('PurchaseFormController', function PurchaseFormContro
       .success(function(data) {
         if (data.errors) {
           // Showing errors.
+          $scope.message = "Error submitting form";
           $scope.errorName = data.errors.name;
           $scope.errorUserName = data.errors.username;
           $scope.errorEmail = data.errors.email;
@@ -528,17 +529,33 @@ parkPurchaseApp.controller('PurchaseFormController', function PurchaseFormContro
       $scope.order.state = newValue.code;
     }
   });
-  $scope.$watch('quantity', function (newValue, oldValue, $scope) {
+  $scope.$watch('order.quantity', function (newValue, oldValue, $scope) {
     if(newValue) {
       if (isInt(newValue)) {
         $scope.price = '£' + newValue * 10;
       } else {
-        $scope.price = '£0'
+        $scope.price = '£0';
       }
+    } else {
+      $scope.price = '£0';
     }
   });
 
   function isInt(n){
     return Math.floor(n) == n && $.isNumeric(n);
   }
+});
+
+
+parkPurchaseApp.directive('match', function($parse) {
+  return {
+    require: 'ngModel',
+    link: function(scope, elem, attrs, ctrl) {
+      scope.$watch(function() {
+        return $parse(attrs.match)(scope) === ctrl.$modelValue;
+      }, function(currentValue) {
+        ctrl.$setValidity('mismatch', currentValue);
+      });
+    }
+  };
 });

@@ -195,33 +195,60 @@
             <h2 class="purchase-title">PURCHASE</h2>
             <div class="center-text">_</div>
             <p>Enter your contact information and indicate your home jurisdiction to order PARK.</p>
-            <form id="purchase-form" novalidate>
-                <input type="hidden" name="formname" value="purchase-form">
-                <input ng-model="order.fullname" type="text" class="purchaseForm" name="fullname" placeholder="full name..." required>
-                <input ng-model="order.email" type="email" class="purchaseForm" name="email" placeholder="enter your email..." required>
-                <input ng-model="order.email2" type="email" class="purchaseForm" name="email2" placeholder="confirm your email..." required>
+            <form name="purchaseForm" id="purchaseForm" novalidate>
+                <div class="form-group">
+                    <input ng-model="order.fullname" type="text" class="purchaseForm" name="fullname" placeholder="full name..." required>
+                    <div class="" ng-show="purchaseForm.fullname.$touched" ng-messages="purchaseForm.fullname.$error" role="alert">
+                        <div ng-message="required">Name required.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input ng-model="order.email" type="email" class="purchaseForm" name="email" placeholder="enter your email..." required>
+                    <div class="" ng-show="purchaseForm.email.$touched" ng-messages="purchaseForm.email.$error" role="alert">
+                        <div ng-message="required">Email required.</div>
+                        <div ng-message="email">This is not a valid email.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input ng-model="order.emailConfirm" type="email" class="purchaseForm" name="emailConfirm" placeholder="confirm your email..." required match="order.email">
+                    <div ng-show="purchaseForm.emailConfirm.$touched" ng-messages="purchaseForm.emailConfirm.$error"  role="alert">
+                        <div ng-message="required">Email required.</div>
+                        <div ng-message="email">This is not a valid email.</div>
+                        <div ng-message="mismatch">Email and Confirm Email must match.</div>
+                    </div>
+                </div>
+                <div class="pricequantity-group">
+                    <input ng-model="order.quantity" type="number" class="purchaseForm purchaseAmount" name="quantity" placeholder="Number of PARK" min="1" max="1000000" required>
+                    <input ng-model="price" type="text" class="purchaseForm purchaseAmount" name="price" readonly>
+                    <div ng-show="purchaseForm.quantity.$touched" ng-messages="purchaseForm.quantity.$error"  role="alert">
+                        <div ng-message="required">Quantity required.</div>
+                        <div ng-message="number">Must be a number.</div>
+                        <div ng-message="min">Minimum purchase of 1 PARK.</div>
+                        <div ng-message="max">Max purchase of 1000000 PARK.</div>
+                    </div>
+                </div>
                 <div class="form_selectors">
                   <label class="residence_form_label_one">Country of Residence
-                      <select ng-model="country" ng-options="country.name for country in countries track by country.code">
+                      <select ng-model="country" name="country" ng-options="country.name for country in countries track by country.code" required>
                           <option value="">-- Select Your Country --</option>
                       </select>
                   </label>
                   <label class="residence_form_label_two">State of Residence
-                      <select ng-model="state" ng-disabled="disableState" ng-options="state.name for state in states track by state.code">
+                      <select ng-model="state" name="state" ng-disabled="disableState" ng-options="state.name for state in states track by state.code" required>
                           <option value="">-- Select Your State --</option>
                       </select>
                   </label>
-                  <label class="residence_form_label_three"><input ng-model="order.agree" type="checkbox" name="agree"> I accept the <a href="pdfs/SubscriptionAgreement.pdf" target="_blank">Subscription Agreement</a></label>
+                    <label class="residence_form_label_three"><input ng-model="order.agree" type="checkbox" name="agree" required> I accept the <a href="pdfs/SubscriptionAgreement.pdf" target="_blank">Subscription Agreement</a></label>
+
                 </div>
-                <input ng-model="order.quantity" type="text" class="purchaseForm" name="quantity" placeholder="Number of PARK" required>
-                <div role="alert">
-    <span class="error" ng-show="myForm.input.$error.required">
-      Required!</span>
-                    <span class="error" ng-show="myForm.input.$error.number">
-      Not valid number!</span>
+                <div ng-show="purchaseForm.country.$touched" ng-messages="purchaseForm.country.$error" role="alert">
+                    <div ng-message="required">Country is required.</div>
+                    </div>
+                <div ng-show="purchaseForm.state.$touched" ng-messages="purchaseForm.state.$error" role="alert">
+                    <div ng-message="required">State is required (for USA).</div>
                 </div>
-                <input type="text" class="purchaseForm" name="price"  readonly>
-                <button ng-click="submit(order)" type="submit" form="purchase-form">Buy PARK</button>
+                <button ng-click="submit(order)" type="submit" ng-disabled="purchaseForm.$invalid" form="purchaseForm">Buy PARK</button>
+                <div ng-show="purchaseForm.message">{{purchaseForm.message}}</div>
             </form>
         </div>
 
@@ -292,6 +319,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
 <script src="assets/bower/jquery.countdown/jquery.countdown.js"></script>
 <script src="jquery.nav.js"></script>
 <script src="js/app.js"></script>
