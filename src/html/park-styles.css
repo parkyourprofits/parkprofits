@@ -123,7 +123,7 @@ body {
 }
 
 #asset {
-	min-height: 400px;
+	min-height: 500px;
 	background-color: #F7F7F7;
 	padding-top: 50px;
 	width: 100%;
@@ -203,7 +203,7 @@ p.gp_presstextpar{
 
 .center-text {
 	text-align:center;
-	margin:7px 0 40px;
+	margin:7px 0 10px;
 }
 .arrow-down {
 	width: 0; 
@@ -243,15 +243,15 @@ div.button {
 
 #purchase {
 	background-color:#ffffff;
-	height: 550px;
+	height: 650px;
 	position: relative;
 	display: inline-block;
 	width: 100%;
 	min-width: 900px;
 }
 #purchase-text{
-	height:550px;
-	width:55%;
+	height:650px;
+	width:50%;
 	float:left;
 	background-color: #f7f7f7;
 	padding: 0;
@@ -269,7 +269,7 @@ div.button {
 	margin-top:40px;
 }
 #purchase p{
-	width: 100%;
+	width: 60%;
 	margin: 0 auto 30px;
 }
 
@@ -286,15 +286,15 @@ div.button {
 .Purchase_info{
 	float: left;
 	width: 40%;
-	margin-top: 20px;
+	margin: 50px 2% 0 0;
 	
 }
 .purchase-details{
 	color: #848789;
-	line-height: 2em;
+	line-height: 2.3em;
 	text-align: left;
 	font-size: .9em;
-	margin-right: 5%;
+	margin-right: 8%;
 }
 
 #disclosure{
@@ -391,10 +391,28 @@ div.button {
 
 }
 .graph_container{
-	background-color:#ffffff;
+	background-color:#233443;
 	width:100%;
 	min-width:900px;
-	height:500px;
+	height:auto;
+}
+.cash_flow_graph{
+	width: 100%;
+	min-height: 700px;
+	background:url(images/Contractual_Cashflow_Graphic_REV.jpg);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background: cover;
+	margin: 0 auto;
+}
+.net_returns_graph{
+	width: 100%;
+	min-height: 700px;
+	background: url(images/Net_Return_Graph.jpg);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background: cover;
+	margin: 10px auto;
 }
 .graph{
 	background:url(images/Park_Graph.jpg);
@@ -535,7 +553,7 @@ div.button {
 .price_distribution_Assets,
 .tablebg_Assets{
 	width:33%;
-	height:100px;
+	height:300px;
 	float:left;
 	margin-top:35px;
 }
@@ -574,8 +592,27 @@ div.button {
 
 .clock-text{
 }
-
-
+.park_icon_one{
+	width:209px;
+	height:159px;
+	background:url(images/park-icons-01_REV.png);
+	background-repeat:no-repeat;
+	margin: 0 auto 20px;
+}
+.park_icon_two{
+	width:100px;
+	height:100px;
+	background:url(images/Park_Coin_Icon.png);
+	background-repeat:no-repeat;
+	margin: 30px auto 50px;	
+}
+.park_icon_three{
+	width:195px;
+	height:127px;
+	background:url(images/park-icons-03_REV2.png);
+	background-repeat:no-repeat;
+	margin: 32px auto 20px;
+}
 dl{
 	width:100%;
 	height:200px;
