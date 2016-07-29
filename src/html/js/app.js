@@ -1,6 +1,9 @@
 var parkPurchaseApp = angular.module('parkPurchaseApp', []);
 
-parkPurchaseApp.controller('PurchaseFormController', function PurchaseFormController($scope) {
+parkPurchaseApp.controller('PurchaseFormController', function PurchaseFormController($scope, $http) {
+  $scope.order = {
+    formname: 'purchase-form'
+  };
   $scope.country = {};
   $scope.state = {};
   $scope.disableState = true;
@@ -487,9 +490,55 @@ parkPurchaseApp.controller('PurchaseFormController', function PurchaseFormContro
       "code": "WY"
     }
   ];
+
+  $scope.submit = function(order) {
+    $http({
+      method  : 'POST',
+      url     : 'https://getsimpleform.com/messages?form_api_token=abdf748b6e0cff589b2d97fd1fbcaac5',
+      data    : order,
+      headers : {'Content-Type': 'application/x-www-form-urlencoded'},
+      // Convert to urlencoded
+      transformRequest: function(obj) {
+        var str = [];
+        for(var p in obj)
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        return str.join("&");
+      }
+    })
+      .success(function(data) {
+        if (data.errors) {
+          // Showing errors.
+          $scope.errorName = data.errors.name;
+          $scope.errorUserName = data.errors.username;
+          $scope.errorEmail = data.errors.email;
+        } else {
+          $scope.message = data.message;
+        }
+      });
+  };
+
   $scope.$watch('country', function (newValue, oldValue, $scope) {
     if(newValue) {
       $scope.disableState = newValue.code != 'US';
+      $scope.order.country = newValue.code;
     }
   });
+  $scope.$watch('state', function (newValue, oldValue, $scope) {
+    if(newValue) {
+      $scope.order.state = newValue.code;
+    }
+  });
+  $scope.$watch('quantity', function (newValue, oldValue, $scope) {
+    if(newValue) {
+      if (isInt(newValue)) {
+        $scope.price = '£' + newValue * 10;
+      } else {
+        $scope.price = '£0'
+      }
+    }
+  });
+
+  function isInt(n){
+    return Math.floor(n) == n && $.isNumeric(n);
+  }
 });
